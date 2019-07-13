@@ -1,0 +1,15 @@
+<?php
+include_once("classes/fileDB.php");
+
+class Point
+{
+    public static function addPoint($data)
+    {
+        $fileDB = new FileDB();
+        $userId = $fileDB->getDataByFilter("clientItems", array("apiKey" => $data['apiKey']))[0]['id'];
+        $data['id_client'] = $userId;
+        $fileDB->setNewData("clientPoints", $data);
+    }
+
+    
+}
