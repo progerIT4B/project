@@ -6,6 +6,7 @@ include_once("classes/order.php");
 include_once("classes/product.php");
 include_once("classes/pageGenerator.php");
 
+
 if (array_key_exists('data', $_REQUEST)) { // api
     $data = $_REQUEST['data'];
 
@@ -30,6 +31,7 @@ if (array_key_exists('data', $_REQUEST)) { // api
             PageGenerator::generateLogined($user);
             break;
         case "getClientItem": //json
+
             if (!array_key_exists('apiKey', $data)) {
                 $data['apiKey'] = $_COOKIE['apiKey'];
             }
@@ -57,7 +59,7 @@ if (array_key_exists('data', $_REQUEST)) { // api
             Order::addOrder($data);
             break;
         case "getOrders": // json
-            $orders = Order::getOrdersByUserId($data["id_client"]);
+            $orders = Order::getOrdersByUserId($data["id"]);
             echo json_encode($orders);
             break;
         case "getProductList":
@@ -67,7 +69,7 @@ if (array_key_exists('data', $_REQUEST)) { // api
             $products = Product::getProductsList();
             PageGenerator::generateProducts($products);
             break;
-        case "getProduct":
+        case "getProduct": //json
             if (!array_key_exists('apiKey', $data)) {
                 $data['apiKey'] = $_COOKIE['apiKey'];
             }

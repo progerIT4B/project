@@ -32,9 +32,10 @@ class User
         }
     }
 
-    public static function getUserData()
+    public static function getUserData($id)
     {
         $fileDB = new FileDB();
-
+        $user = $fileDB->getDataByFilter("clientItems", array("id" => $id));
+        return $user;
     }
 }

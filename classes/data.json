@@ -76,7 +76,7 @@
     "clientPoints": [
         {
             "id": 0,
-            "id_client": 0,
+            "id_client": 2,
             "point_type": 0,
             "address": "",
             "format": 0,
@@ -141,7 +141,7 @@
             "order_status": 0
         },
         {
-            "id_client": 0,
+            "id_client": 2,
             "id_provider": 0,
             "id_point_client": "2",
             "id_point_provider": "",
