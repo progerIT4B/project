@@ -19,6 +19,11 @@ class Order
     {
         $fileDB = new FileDB();
         $orders = $fileDB->getDataByFilter("orders", array("id_client" => $id));
+
+        foreach ($orders as &$order) {
+            $ordersItems = $fileDB->getDataByFilter("ordersItems", array("id_order" => $order['id']));
+            $order['items'] = $ordersItems;
+        }
         return $orders;
     }
     

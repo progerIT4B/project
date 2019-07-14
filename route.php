@@ -7,7 +7,7 @@ include_once("classes/product.php");
 include_once("classes/pageGenerator.php");
 
 $postData = file_get_contents('php://input'); 
-$arData = json_decode($postData, true); 
+$arData = json_decode($postData, true);
 
 if (array_key_exists('data', $arData)) { // api
     $data = $arData['data'];
@@ -70,6 +70,7 @@ if (array_key_exists('data', $arData)) { // api
         case "setClientItemFrom1C":
             //
             break;
+        
         default:
             PageGenerator::generateBase();
     }
