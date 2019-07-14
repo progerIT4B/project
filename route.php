@@ -6,11 +6,17 @@ include_once("classes/order.php");
 include_once("classes/product.php");
 include_once("classes/pageGenerator.php");
 
+$postData = file_get_contents('php://input'); 
+$arData = json_decode($postData, true); 
 
-if (array_key_exists('data', $_REQUEST)) { // api
-    $data = $_REQUEST['data'];
-
+if (array_key_exists('data', $arData)) { // api
+    $data = $arData['data'];
     $fileDB = new FileDB();
+
+    if (!array_key_exists('apiKey', $data) && 
+        array_key_exists('apiKey', $_COOKIE)) {
+        $data['apiKey'] = $_COOKIE['apiKey'];
+    }
 
     switch ($data['method']) {
         case "register":
@@ -22,26 +28,16 @@ if (array_key_exists('data', $_REQUEST)) { // api
                 User::checkLogin($data);
             break;
         case "edit":
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             $apiKey = $_COOKIE['apiKey'];
             $fileDB->editDataByFilter("clientItems", array("apiKey" => $apiKey), $data);
             $user = $fileDB->getDataByFilter("clientItems", array("apiKey" => $apiKey))[0];
             PageGenerator::generateLogined($user);
             break;
         case "getClientItem": //json
-
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             $user = User::getUserData($data['id'])[0];
             echo json_encode($user);
             break;
         case "addClientPoint": 
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             Point::addPoint($data);
             break;
         case "getClientPoint": //json
@@ -53,9 +49,6 @@ if (array_key_exists('data', $_REQUEST)) { // api
             echo json_encode($points);
             break;
         case "addOrder":
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             Order::addOrder($data);
             break;
         case "getOrders": // json
@@ -63,28 +56,19 @@ if (array_key_exists('data', $_REQUEST)) { // api
             echo json_encode($orders);
             break;
         case "getProductList":
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             $products = Product::getProductsList();
             PageGenerator::generateProducts($products);
             break;
         case "getProduct": //json
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             $product = Product::getProductById($data['id']);
             echo json_encode($product);
             break;
-        case "addProductToPoint":
-            
-
-            break;
         case "addProductToOrder":
-            if (!array_key_exists('apiKey', $data)) {
-                $data['apiKey'] = $_COOKIE['apiKey'];
-            }
             Order::addOrderItem($data);
+            break;
+        // 1C incoming
+        case "setClientItemFrom1C":
+            //
             break;
         default:
             PageGenerator::generateBase();
