@@ -76,6 +76,10 @@ if (array_key_exists('data', $_REQUEST)) { // api
             $product = Product::getProductById($data['id']);
             echo json_encode($product);
             break;
+        case "addProductToPoint":
+            
+
+            break;
         case "addProductToOrder":
             if (!array_key_exists('apiKey', $data)) {
                 $data['apiKey'] = $_COOKIE['apiKey'];

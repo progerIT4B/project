@@ -43,7 +43,8 @@ abstract class AbstractScheme
             'id' => 0,
             'id_group' => 0,
             'name' => "",
-            'name_full' => ""
+            'name_full' => "",
+            'gtin' => 0,
         )));
     }
 
@@ -82,7 +83,9 @@ abstract class AbstractScheme
             'id_point_provider' => '',
             'order_date' => '',
             'order_delivery_date' => '',
-            'order_status' => 0
+            'order_status' => 0,
+            'order_type' => 0
+            
         )));
     }
 
