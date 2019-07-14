@@ -89,6 +89,8 @@ if (array_key_exists('data', $_REQUEST)) { // api
         $apiKey = $_COOKIE['apiKey'];
         $user = $fileDB->getDataByFilter("clientItems", array("apiKey" => $apiKey))[0];
         PageGenerator::generateLogined($user);
+    } else {
+        PageGenerator::generateBase();
     }
 }
 

@@ -66,9 +66,9 @@
             "bank": "454554",
             "account": "45545454",
             "account_cor": "45454545",
-            "type": 0,
+            "type": 1,
             "fio": "\u0418\u0432\u0430\u043d\u043e\u0432 \u0418\u0432\u0430\u043d \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447",
-            "apiKey": "5d2a1d6b1f17f",
+            "apiKey": "pr5d2a1d6b1f17f",
             "pass": "qwerty",
             "id": 3
         }
@@ -119,8 +119,14 @@
         {
             "id": 0,
             "id_group": 0,
-            "name": "",
-            "name_full": ""
+            "name": "Молоко",
+            "name_full": "Молоко коровье"
+        },
+        {
+            "id": 1,
+            "id_group": 0,
+            "name": "Картофель",
+            "name_full": "Картофель огородный"
         }
     ],
     "orders": [
@@ -138,6 +144,16 @@
             "id_client": 0,
             "id_provider": 0,
             "id_point_client": "2",
+            "id_point_provider": "",
+            "order_date": "14.07.2019 06:54:56",
+            "order_delivery_date": "16.07.2019",
+            "order_status": 0,
+            "id": 1
+        },
+        {
+            "id_client": 0,
+            "id_provider": 0,
+            "id_point_client": "3",
             "id_point_provider": "",
             "order_date": "14.07.2019 06:54:56",
             "order_delivery_date": "16.07.2019",
