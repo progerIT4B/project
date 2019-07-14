@@ -1,7 +1,9 @@
 <?php
-include_once("classes/register.php");
+include_once("classes/user.php");
 include_once("classes/fileDB.php");
 include_once("classes/point.php");
+include_once("classes/order.php");
+include_once("classes/product.php");
 include_once("classes/pageGenerator.php");
 
 if (array_key_exists('data', $_REQUEST)) { // api
@@ -14,6 +16,9 @@ if (array_key_exists('data', $_REQUEST)) { // api
             $apiKey = User::saveUserData($data);
             $user = $fileDB->getDataByFilter("clientItems", array("apiKey" => $apiKey))[0];
             PageGenerator::generateLogined($user);
+            break;
+        case "login":
+                User::checkLogin($data);
             break;
         case "edit":
             if (!array_key_exists('apiKey', $_COOKIE)) {
@@ -28,6 +33,16 @@ if (array_key_exists('data', $_REQUEST)) { // api
             $data['apiKey'] = $_COOKIE['apiKey'];
             Point::addPoint($data);
             break;
+        case "addOrder":
+            $data['apiKey'] = $_COOKIE['apiKey'];
+            Order::addOrder($data);
+            break;
+        case "getProductList":
+            $data['apiKey'] = $_COOKIE['apiKey'];
+            Order::addOrder($data);
+            break;
+        default:
+            PageGenerator::generateBase();
     }
 } else {
     // check user logined

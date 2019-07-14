@@ -32,7 +32,8 @@ abstract class AbstractScheme
             'point_type' => 0,
             'address' => '',
             'format' => 0,
-            'productlife' => 0
+            'productlife' => 0,
+            'name' => ""
         )));
     }
 
@@ -77,7 +78,7 @@ abstract class AbstractScheme
             'id' => 0,
             'id_client' => 0,
             'id_provider' => 0,
-            'id_point_clien' => '',
+            'id_point_client' => '',
             'id_point_provider' => '',
             'order_date' => '',
             'order_delivery_date' => '',

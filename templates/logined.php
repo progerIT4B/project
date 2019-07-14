@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo "logined page!"; ?>
+    <?php 
+        print_r($data);
+        print_r($_COOKIE);
+    ?>
 </body>
 </html>

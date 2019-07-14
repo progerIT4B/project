@@ -7,7 +7,7 @@ class PageGenerator
         require(realpath("templates/logined.php"));
     }
 
-    public static function generateBase($data)
+    public static function generateBase()
     {
         require("templates/base.php");
     }

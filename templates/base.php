@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo $data['test'] . "-base page!"; ?>
+    <?php echo "base page!"; ?>
 </body>
 </html>
