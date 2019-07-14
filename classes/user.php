@@ -7,6 +7,9 @@ class User
     {
         $fileDB = new FileDB();
         $data['apiKey'] = uniqid();
+        if ($data['type'] == 1) {
+            $data['apiKey'] = 'pr' . $data['apiKey'];
+        }
         $fileDB->setNewData("clientItems", $data);
         return $data['apiKey'];
     }
@@ -27,5 +30,11 @@ class User
             // send error to ajax
             PageGenerator::generateBase();
         }
+    }
+
+    public static function getUserData()
+    {
+        $fileDB = new FileDB();
+
     }
 }

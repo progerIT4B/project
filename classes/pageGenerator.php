@@ -16,4 +16,9 @@ class PageGenerator
     {
         require(realpath("templates/register.php"));
     } 
+
+    public static function generateProducts($data)
+    {
+        require(realpath("templates/products.php"));
+    } 
 }

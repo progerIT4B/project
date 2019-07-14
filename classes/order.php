@@ -15,5 +15,11 @@ class Order
         $fileDB->setNewData("ordersItems", $data);
     }
 
+    public static function getOrdersByUserId($id)
+    {
+        $fileDB = new FileDB();
+        $orders = $fileDB->getDataByFilter("orders", array("id_client" => $id));
+        return $orders;
+    }
     
 }

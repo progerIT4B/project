@@ -16,5 +16,7 @@ class Product
         $product = $fileDB->getDataByFilter("productItems", array('id' => $id))[0];
         return $product;
     }
+
+    
     
 }
